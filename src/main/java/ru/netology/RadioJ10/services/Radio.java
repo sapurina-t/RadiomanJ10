@@ -8,31 +8,31 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > 10) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (currentVolume < 0) {
             return;
         }
-        currentVolume = newCurrentVolume;
+        this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {
         if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
+            currentVolume++;
+        } else {
+            currentVolume = 10;
         }
     }
 
     public void reduceVolume() {
         if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
+            currentVolume--;
+        } else {
+            currentVolume = 0;
         }
     }
-
-//    public void setToMaxVolume() {
-//        currentVolume = 10;
-//    }
 }
 
 
