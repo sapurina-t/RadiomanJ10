@@ -4,10 +4,23 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+    @Test
+    public void constructorStationOptions() {
+        Radio radio = new Radio(30);
+        Assertions.assertEquals(29, radio.getCurrentStationNumber());
+
+        radio.next();
+        Assertions.assertEquals(0, radio.getCurrentStationNumber());
+
+        radio.prev();
+        Assertions.assertEquals(29, radio.getCurrentStationNumber());
+    }
+
+    Radio radio = new Radio();
     @Test
     public void shouldIncreaseVolumeOverMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -17,12 +30,11 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseVolumeMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
 
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -30,21 +42,18 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseVolume() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
 
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
-
     @Test
     public void shouldReduceVolume() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(1);
 
         radio.reduceVolume();
@@ -57,7 +66,6 @@ public class RadioTest {
 
     @Test
     public void shouldReduceVolumeMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
 
         radio.reduceVolume();
@@ -70,7 +78,6 @@ public class RadioTest {
 
     @Test
     public void shouldReduceVolumeOverMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(-1);
 
         int expected = 0;
@@ -81,7 +88,6 @@ public class RadioTest {
 
     @Test
     public void shouldSwitchToTheNextStation() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(8);
 
         radio.next();
@@ -94,7 +100,6 @@ public class RadioTest {
 
     @Test
     public void shouldSwitchToZeroStationNext() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(9);
 
         radio.next();
@@ -107,7 +112,6 @@ public class RadioTest {
 
     @Test
     public void shouldSwitchToThePreviousStation() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(1);
 
         radio.prev();
@@ -120,7 +124,6 @@ public class RadioTest {
 
     @Test
     public void shouldSwitchToZeroStationPrev() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(0);
 
         radio.prev();
@@ -133,7 +136,6 @@ public class RadioTest {
 
     @Test
     public void shouldBeNoMoreLastStation() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(10);
 
         int actual = radio.getCurrentStationNumber();
@@ -144,7 +146,6 @@ public class RadioTest {
 
     @Test
     public void mustNotBeLessThanTheFirstStation() {
-        Radio radio = new Radio();
         radio.setCurrentStationNumber(-1);
 
         int actual = radio.getCurrentStationNumber();
@@ -152,5 +153,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
 }
