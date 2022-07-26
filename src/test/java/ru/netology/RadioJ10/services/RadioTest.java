@@ -3,7 +3,7 @@ package ru.netology.RadioJ10.services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RadioTest {
+public class RadioTest{
 
     @Test
     public void constructorStationOptions() {

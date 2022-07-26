@@ -1,5 +1,15 @@
 package ru.netology.RadioJ10.services;
 
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
     private int minVolume = 0;
     private int maxVolume = 100;
@@ -9,9 +19,9 @@ public class Radio {
     private int maxStation = 9;
     private int currentStationNumber;
 
-    public Radio() {
-
-    }
+//    public Radio() {
+//
+//    }
 
     public Radio(int currentStationNumber) {
         this.maxStation = minStation + currentStationNumber - 1;
@@ -78,5 +88,4 @@ public class Radio {
         }
     }
 }
-
 
