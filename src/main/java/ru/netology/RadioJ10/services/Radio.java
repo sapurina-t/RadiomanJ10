@@ -1,68 +1,78 @@
 package ru.netology.RadioJ10.services;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
+    private int minVolume = 0;
+    private int maxVolume = 100;
     private int currentVolume;
+
+    private int minStation = 0;
+    private int maxStation = 9;
     private int currentStationNumber;
 
-    public int getCurrentVolume() {
-        return currentVolume;
+
+    public Radio(int currentStationNumber) {
+        this.maxStation = minStation + currentStationNumber - 1;
+        this.currentStationNumber = maxStation;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
+        if (currentVolume > maxVolume) {
             return;
         }
-        if (currentVolume < 0) {
+        if (currentVolume < minVolume) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
         } else {
-            currentVolume = 10;
+            currentVolume = maxVolume;
         }
     }
 
     public void reduceVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume--;
         } else {
-            currentVolume = 0;
+            currentVolume = minVolume;
         }
-    }
-
-    public int getCurrentStationNumber() {
-        return currentStationNumber;
     }
 
     public void setCurrentStationNumber(int currentStationNumber) {
-        if (currentStationNumber > 9) {
+        if (currentStationNumber > maxStation) {
             return;
         }
-        if (currentStationNumber < 0) {
+        if (currentStationNumber < minStation) {
             return;
         }
         this.currentStationNumber = currentStationNumber;
     }
 
     public void next() {
-        if (currentStationNumber < 9) {
+        if (currentStationNumber < maxStation) {
             currentStationNumber++;
         } else {
-            currentStationNumber = 0;
+            currentStationNumber = minStation;
         }
     }
 
     public void prev() {
-        if (currentStationNumber > 0) {
+        if (currentStationNumber > minStation) {
             currentStationNumber--;
         } else {
-            currentStationNumber = 9;
+            currentStationNumber = maxStation;
         }
     }
 }
-
 
