@@ -1,7 +1,5 @@
 package ru.netology.RadioJ10.services;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,17 +17,10 @@ public class Radio {
     private int maxStation = 9;
     private int currentStationNumber;
 
-//    public Radio() {
-//
-//    }
 
     public Radio(int currentStationNumber) {
         this.maxStation = minStation + currentStationNumber - 1;
         this.currentStationNumber = maxStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void setCurrentVolume(int currentVolume) {
@@ -56,10 +47,6 @@ public class Radio {
         } else {
             currentVolume = minVolume;
         }
-    }
-
-    public int getCurrentStationNumber() {
-        return currentStationNumber;
     }
 
     public void setCurrentStationNumber(int currentStationNumber) {
